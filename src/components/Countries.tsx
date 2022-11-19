@@ -32,11 +32,7 @@ function Countries() {
   return (
     <div>
       {countries.map((country: any) => (
-        <div
-          className="countries--card"
-          key={country.name}
-          onClick={() => handleMoreInfo(country.name)}
-        >
+        <div className="countries--card" key={country.name}>
           <Link to={`/${country.name}`}>
             <img
               className="countries--card--flag"

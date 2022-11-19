@@ -10,6 +10,10 @@ function Country() {
   const [country, setCountry] = useState<any[]>([])
   const { name } = useParams()
   const [languageArray, setLanguageArray] = useState<any[]>([])
+  const [borderCountries, setBorderCountries] = useState<any[]>([])
+  const [borderCountriesName, setBorderCountriesName] = useState<
+    any[]
+  >([])
 
   useEffect(() => {
     const getCountry = async () => {
@@ -22,72 +26,155 @@ function Country() {
     getCountry()
   }, [])
 
-  // if (country[0]) {
-  //   country[0].languages.map((language: any) => {
-  //     setLanguageArray((languageArray) => [
-  //       ...languageArray,
-  //       language.name,
-  //     ])
-  //   })
-  // }
+  // to get the languages, we need to map over the array
+  useEffect(() => {
+    if (country[0] && country[0].languages) {
+      country[0].languages.map((language: any) => {
+        setLanguageArray((languageArray) => [
+          ...languageArray,
+          language.name,
+        ])
+      })
+    }
+
+    if (country[0] && country[0].borders) {
+      country[0].borders.map((border: any) => {
+        setBorderCountries((borderCountries) => [
+          ...borderCountries,
+          border,
+        ])
+      })
+    }
+  }, [country])
+
+  // for each border country, we need to make a request to the API to get the name of the country and then display it on the page
+  useEffect(() => {
+    if (borderCountries.length > 0 && country[0] !== undefined) {
+      borderCountries.map((border) => {
+        const getBorderCountry = async () => {
+          const response = await fetch(
+            `https://restcountries.com/v2/alpha/${border}`
+          )
+          const borderCountry = await response.json()
+          setBorderCountriesName((borderCountriesName) => [
+            ...borderCountriesName,
+            borderCountry.name,
+          ])
+        }
+        getBorderCountry()
+      })
+    }
+  }, [borderCountries])
 
   console.log(country[0])
   console.log({ languageArray })
+  console.log({ borderCountries })
+  console.log({ borderCountriesName })
+
   return (
     <div className="country--page">
       {country.length ? (
         <div className="country--page--main--container">
-          <img src="" alt="" />
+          <img src={country[0].flag} alt={country[0].alpha2Code} />
           <div className="country--page--info">
-            <h1>Country name</h1>
-            {/* find the native name and print it */}
             <>
               <p>
-                Native Name: <span>{country[0].nativeName}</span>
+                Native Name:{' '}
+                {country[0].nativeName ? (
+                  <span>{country[0].nativeName}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
-                Population: <span>{country[0].population}</span>
+                Population:{' '}
+                {country[0].population ? (
+                  <span>{country[0].population}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
-                Region: <span>{country[0].region}</span>
+                Region:{' '}
+                {country[0].region ? (
+                  <span>{country[0].region}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
-                Sub Region: <span>{country[0].subregion}</span>
+                Sub Region:{' '}
+                {country[0].subregion ? (
+                  <span>{country[0].subregion}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
-                Capital: <span>{country[0].capital}</span>
+                Capital:{' '}
+                {country[0].capital ? (
+                  <span>{country[0].capital}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
                 Top Level Domain:{' '}
-                <span>{country[0].topLevelDomain}</span>
+                {country[0].topLevelDomain ? (
+                  <span>{country[0].topLevelDomain}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
                 Independent :{' '}
-                <span>{country[0].independent ? 'yes' : 'no'}</span>
+                {country[0].independent ? (
+                  <span>{country[0].independent ? 'yes' : 'no'}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
-                Timezones: <span>{country[0].timezones}</span>
+                Timezones:{' '}
+                {country[0].timezones ? (
+                  <span>{country[0].timezones[0]}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
               <p>
-                {/* Languages: while looping through the languages array, print
-                each language name */}
-                Languages:{' '}
-                <span>
-                  {languageArray.map((language) => (
-                    <span>{language}</span>
-                  ))}
-                </span>
+                Languages:
+                {languageArray.length > 0 ? (
+                  languageArray.map((language) => (
+                    <span> {language} </span>
+                  ))
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
-              {/* 
               <p>
-                Currencies: <span>{country[0].currencies}</span>
+                Currencies:{' '}
+                {country[0].currencies ? (
+                  <span>{country[0].currencies[0].name}</span>
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
-          */}
             </>
             <>
               <p>
                 Border Countries:
-                {/*TODO: mapleyerek aç tane varsa span içine yerleştir*/}
+                {/*TODO: print all borderCountriesName*/}
+                {borderCountriesName.length > 0 ? (
+                  borderCountriesName.map((borderCountry) => (
+                    // TODO: make the border countries clickable and link to their respective pages
+                    <Link to={`/${borderCountry}`} target="_parent">
+                      <span> {borderCountry} </span>
+                    </Link>
+                  ))
+                ) : (
+                  <span>N/A</span>
+                )}
               </p>
             </>
           </div>

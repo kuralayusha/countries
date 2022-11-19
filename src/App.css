@@ -5,3 +5,7 @@
 .countries--card--flag {
     width: 200px;
 }
+
+.country--page--main--container img {
+    width: 300px;
+}
