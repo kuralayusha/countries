@@ -1,3 +1,7 @@
-.country--card--flag {
+.countries--card {
+    cursor: pointer;
+}
+
+.countries--card--flag {
     width: 200px;
 }
