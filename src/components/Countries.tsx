@@ -6,15 +6,18 @@ import {
   useParams,
 } from 'react-router-dom'
 
-import Country from './Country'
+import Filters from './Filters'
 
 function Countries() {
+  const [searchInput, setSearchInput] = useState('')
+  const [filtered, setFiltered] = useState<any[]>([])
   const [countries, setCountries] = useState<[]>([])
+
   const url = 'https://restcountries.com/v2/all'
   const { name } = useParams()
 
-  // with useEffect, we can make a request to the API with await
-  // and then set the state with the data we get back
+  // // with useEffect, we can make a request to the API with await
+  // // and then set the state with the data we get back
   useEffect(() => {
     const getCountries = async () => {
       const response = await fetch(url)
@@ -24,13 +27,10 @@ function Countries() {
     getCountries()
   }, [])
 
-  function handleMoreInfo(country: any) {
-    console.log(country)
-  }
-
   console.log({ countries })
   return (
     <div>
+      <Filters />
       {countries.map((country: any) => (
         <div className="countries--card" key={country.name}>
           <Link to={`/${country.name}`}>

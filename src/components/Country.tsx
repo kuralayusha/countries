@@ -47,7 +47,10 @@ function Country() {
     }
   }, [country])
 
-  // for each border country, we need to make a request to the API to get the name of the country and then display it on the page
+  // for each border country,
+  // we need to make a request to the
+  // API to get the name of the country and
+  // then display it on the page
   useEffect(() => {
     if (borderCountries.length > 0 && country[0] !== undefined) {
       borderCountries.map((border) => {
