@@ -67,7 +67,7 @@ function Countries() {
   console.log({ filteredCountries })
 
   return (
-    <div>
+    <div className="countries--container">
       <Filters
         search={search}
         setSearch={setSearch}
@@ -76,22 +76,25 @@ function Countries() {
       />
       {filteredCountries.map((country: any) => (
         <div className="countries--card" key={country.name}>
-          <Link to={`/${country.name}`}>
-            <img
-              className="countries--card--flag"
-              src={country.flag}
-              alt={country.name}
-            />
-            <h3>{country.name}</h3>
-            <p>
-              Population: <span>{country.population}</span>
-            </p>
-            <p>
-              Region: <span>{country.region}</span>
-            </p>
-            <p>
-              Capital: <span>{country.capital}</span>
-            </p>
+          <Link
+            to={`/${country.name}`}
+            style={{ textDecoration: 'none' }}
+          >
+            <div className="countries--card--flag">
+              <img src={country.flag} alt={country.name} />
+            </div>
+            <div className="countries--card--info">
+              <h3>{country.name}</h3>
+              <p>
+                Population: <span>{country.population}</span>
+              </p>
+              <p>
+                Region: <span>{country.region}</span>
+              </p>
+              <p>
+                Capital: <span>{country.capital}</span>
+              </p>
+            </div>
           </Link>
         </div>
       ))}
