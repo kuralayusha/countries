@@ -5,6 +5,7 @@ import {
   Link,
   useParams,
 } from 'react-router-dom'
+import arrowIcon from '../icons/arrow-back-outline.svg'
 
 function Country() {
   const [country, setCountry] = useState<any[]>([])

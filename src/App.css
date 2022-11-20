@@ -96,6 +96,11 @@ body {
     color: #111517;
 }
 
+.header p img {
+    width: 12px;
+    margin-right: 2px;
+}
+
 /* -------------------------------FILTERS----------------------- */
 
 .form {
@@ -222,7 +227,6 @@ body {
 
 #light .countries--container {
     background-color: #FAFAFA;
-    margin: 4px 0;
 }
 
 .countries--card {
@@ -382,6 +386,14 @@ body {
     font-size: 14px;
     line-height: 20px;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.back--link img {
+    width: 15px;
 }
 
 #dark .back--link {
