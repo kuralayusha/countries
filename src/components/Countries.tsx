@@ -9,9 +9,12 @@ import {
 import Filters from './Filters'
 
 function Countries() {
-  const [searchInput, setSearchInput] = useState('')
-  const [filtered, setFiltered] = useState<any[]>([])
-  const [countries, setCountries] = useState<[]>([])
+  const [countries, setCountries] = useState<any[]>([])
+  const [filteredCountries, setFilteredCountries] = useState<any[]>(
+    []
+  )
+  const [search, setSearch] = useState<string>('')
+  const [region, setRegion] = useState<string>('')
 
   const url = 'https://restcountries.com/v2/all'
   const { name } = useParams()
@@ -23,15 +26,55 @@ function Countries() {
       const response = await fetch(url)
       const data = await response.json()
       setCountries(data)
+      console.log('data çektim')
     }
     getCountries()
   }, [])
 
+  // once we have the data,
+  // if there is no search term, and no region selected,
+  // we want to display all the countries
+  // if there is a search term, we want to filter the countries
+  // if there is a region selected, we want to filter the countries
+  // if there is a search term and a region selected, we want to filter the countries
+  useEffect(() => {
+    if (search === '' && region === '') {
+      setFilteredCountries(countries)
+    } else if (search !== '' && region === '') {
+      setFilteredCountries(
+        countries.filter((country) =>
+          country.name.toLowerCase().includes(search.toLowerCase())
+        )
+      )
+    } else if (search === '' && region !== '') {
+      setFilteredCountries(
+        countries.filter((country) => country.region === region)
+      )
+    } else if (search !== '' && region !== '') {
+      setFilteredCountries(
+        countries
+          .filter((country) =>
+            country.name.toLowerCase().includes(search.toLowerCase())
+          )
+          .filter((country) => country.region === region)
+      )
+    }
+  }, [search, region, countries])
+
   console.log({ countries })
+  console.log(search)
+  console.log(region)
+  console.log({ filteredCountries })
+
   return (
     <div>
-      <Filters />
-      {countries.map((country: any) => (
+      <Filters
+        search={search}
+        setSearch={setSearch}
+        region={region}
+        setRegion={setRegion}
+      />
+      {filteredCountries.map((country: any) => (
         <div className="countries--card" key={country.name}>
           <Link to={`/${country.name}`}>
             <img
