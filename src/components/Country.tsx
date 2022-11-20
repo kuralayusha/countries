@@ -76,11 +76,25 @@ function Country() {
 
   return (
     <div className="country--page">
+      <p className="back">
+        <Link
+          to={`/`}
+          target="_parent"
+          style={{ textDecoration: 'none' }}
+          className="back--link"
+        >
+          Back
+        </Link>
+      </p>
+
       {country.length ? (
         <div className="country--page--main--container">
           <img src={country[0].flag} alt={country[0].alpha2Code} />
           <div className="country--page--info">
-            <>
+            <div className="info--part one">
+              <h1>{country[0].name}</h1>
+            </div>
+            <div className="info--part two">
               <p>
                 Native Name:{' '}
                 {country[0].nativeName ? (
@@ -121,6 +135,8 @@ function Country() {
                   <span>N/A</span>
                 )}
               </p>
+            </div>
+            <div className="info--part three">
               <p>
                 Top Level Domain:{' '}
                 {country[0].topLevelDomain ? (
@@ -163,23 +179,27 @@ function Country() {
                   <span>N/A</span>
                 )}
               </p>
-            </>
-            <>
-              <p>
-                Border Countries:
+            </div>
+            <div className="info--part four">
+              <h3>Border Countries:</h3>
+              <div className="info--part four group">
                 {/*TODO: print all borderCountriesName*/}
                 {borderCountriesName.length > 0 ? (
                   borderCountriesName.map((borderCountry) => (
                     // TODO: make the border countries clickable and link to their respective pages
-                    <Link to={`/${borderCountry}`} target="_parent">
-                      <span> {borderCountry} </span>
+                    <Link
+                      to={`/${borderCountry}`}
+                      target="_parent"
+                      style={{ textDecoration: 'none' }}
+                    >
+                      <p> {borderCountry} </p>
                     </Link>
                   ))
                 ) : (
-                  <span>N/A</span>
+                  <p>N/A</p>
                 )}
-              </p>
-            </>
+              </div>
+            </div>
           </div>
         </div>
       ) : (
