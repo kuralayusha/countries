@@ -1,5 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
 .countries--card {
     cursor: pointer;
+    margin-top: 30px;
+}
+
+#dark .countries--card {
+    cursor: pointer;
+    background-color: brown;
+}
+
+#light .countries--card {
+    cursor: pointer;
+    background-color: rgb(226, 176, 119);
 }
 
 .countries--card--flag {
@@ -9,3 +26,4 @@
 .country--page--main--container img {
     width: 300px;
 }
+
