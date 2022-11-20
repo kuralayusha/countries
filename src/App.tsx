@@ -19,15 +19,8 @@ type appFile = {
 function App() {
   const [theme, setTheme] = useState<string>('dark')
 
-  // function toggleTheme() {
-  //   setTheme((theme) => (theme === 'light' ? 'dark' : 'light'))
-
-  // function handleThemeChange() {
-  //   setTheme((theme) => (theme === 'light' ? 'dark' : 'light'))
-  // }
   console.log(theme)
   return (
-    // <ThemeContext.Provider value={{ theme, toggleTheme }}>
     <div className="App" id={theme}>
       <BrowserRouter>
         <Header setTheme={setTheme} theme={theme} />
@@ -37,7 +30,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </div>
-    // </ThemeContext.Provider>
   )
 }
 

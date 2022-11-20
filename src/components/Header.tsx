@@ -5,14 +5,17 @@ type headerProps = {
 
 function Header({ setTheme, theme }: headerProps) {
   function handleThemeChange() {
-    // This function is called when the user clicks the theme toggle button in the header component (see the return statement below)
+    // This function is called
+    // when the user clicks the theme toggle
+    // button in the header component
+    // (see the return statement below)
     setTheme(theme === 'light' ? 'dark' : 'light')
   }
   return (
-    <nav>
-      <p>Where in the world?</p>
+    <header className="header">
+      <h1>Where in the world?</h1>
       <p onClick={handleThemeChange}>Dark Mode</p>
-    </nav>
+    </header>
   )
 }
 

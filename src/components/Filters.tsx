@@ -12,7 +12,7 @@ function Filters(props: FilterProps) {
 
   return (
     <div className="filters">
-      <form className="form" id="form">
+      <form className="form">
         <input
           type="search"
           name="search"
