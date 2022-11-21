@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 import { createContext, useState } from 'react'
 
 import Header from './components/Header'
@@ -22,13 +22,13 @@ function App() {
   console.log(theme)
   return (
     <div className="App" id={theme}>
-      <BrowserRouter>
+      <HashRouter>
         <Header setTheme={setTheme} theme={theme} />
         <Routes>
           <Route path="/" element={<Countries />} />
           <Route path="/:name" element={<Country />} />
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }
