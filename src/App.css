@@ -86,6 +86,7 @@ body {
     font-weight: 600;
     font-size: 12px;
     line-height: 16px;
+    cursor: pointer;
 }
 
 #dark .header p {
@@ -421,15 +422,15 @@ body {
     border-radius: 5.72px;
 }
 
-#dark .country--page--main--container img {
-    background: #808080;
-    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
-}
+/* #dark .country--page--main--container img { */
+    /* background: #808080; */
+    /* box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.3); */
+/* } */
 
-#light .country--page--main--container img {
-    background: #808080;
-    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3);
-}
+/* #light .country--page--main--container img { */
+    /* background: #808080; */
+    /* box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.3); */
+/* } */
 
 .country--page--info {
     display: flex;
