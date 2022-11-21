@@ -74,30 +74,32 @@ function Countries() {
         region={region}
         setRegion={setRegion}
       />
-      {filteredCountries.map((country: any) => (
-        <div className="countries--card" key={country.name}>
-          <Link
-            to={`/${country.name}`}
-            style={{ textDecoration: 'none' }}
-          >
-            <div className="countries--card--flag">
-              <img src={country.flag} alt={country.name} />
-            </div>
-            <div className="countries--card--info">
-              <h3>{country.name}</h3>
-              <p>
-                Population: <span>{country.population}</span>
-              </p>
-              <p>
-                Region: <span>{country.region}</span>
-              </p>
-              <p>
-                Capital: <span>{country.capital}</span>
-              </p>
-            </div>
-          </Link>
-        </div>
-      ))}
+      <div className="countries--card--holder">
+        {filteredCountries.map((country: any) => (
+          <div className="countries--card" key={country.name}>
+            <Link
+              to={`/${country.name}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <div className="countries--card--flag">
+                <img src={country.flag} alt={country.name} />
+              </div>
+              <div className="countries--card--info">
+                <h3>{country.name}</h3>
+                <p>
+                  Population: <span>{country.population}</span>
+                </p>
+                <p>
+                  Region: <span>{country.region}</span>
+                </p>
+                <p>
+                  Capital: <span>{country.capital}</span>
+                </p>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

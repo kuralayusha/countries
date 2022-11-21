@@ -95,91 +95,95 @@ function Country() {
             <div className="info--part one">
               <h1>{country[0].name}</h1>
             </div>
-            <div className="info--part two">
-              <p>
-                Native Name:{' '}
-                {country[0].nativeName ? (
-                  <span>{country[0].nativeName}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Population:{' '}
-                {country[0].population ? (
-                  <span>{country[0].population}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Region:{' '}
-                {country[0].region ? (
-                  <span>{country[0].region}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Sub Region:{' '}
-                {country[0].subregion ? (
-                  <span>{country[0].subregion}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Capital:{' '}
-                {country[0].capital ? (
-                  <span>{country[0].capital}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-            </div>
-            <div className="info--part three">
-              <p>
-                Top Level Domain:{' '}
-                {country[0].topLevelDomain ? (
-                  <span>{country[0].topLevelDomain}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Independent :{' '}
-                {country[0].independent ? (
-                  <span>{country[0].independent ? 'yes' : 'no'}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Timezones:{' '}
-                {country[0].timezones ? (
-                  <span>{country[0].timezones[0]}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Languages:
-                {languageArray.length > 0 ? (
-                  languageArray.map((language) => (
-                    <span> {language} </span>
-                  ))
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
-              <p>
-                Currencies:{' '}
-                {country[0].currencies ? (
-                  <span>{country[0].currencies[0].name}</span>
-                ) : (
-                  <span>N/A</span>
-                )}
-              </p>
+            <div className="info--part--group">
+              <div className="info--part two">
+                <p>
+                  Native Name:{' '}
+                  {country[0].nativeName ? (
+                    <span>{country[0].nativeName}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Population:{' '}
+                  {country[0].population ? (
+                    <span>{country[0].population}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Region:{' '}
+                  {country[0].region ? (
+                    <span>{country[0].region}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Sub Region:{' '}
+                  {country[0].subregion ? (
+                    <span>{country[0].subregion}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Capital:{' '}
+                  {country[0].capital ? (
+                    <span>{country[0].capital}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+              </div>
+              <div className="info--part three">
+                <p>
+                  Top Level Domain:{' '}
+                  {country[0].topLevelDomain ? (
+                    <span>{country[0].topLevelDomain}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Independent :{' '}
+                  {country[0].independent ? (
+                    <span>
+                      {country[0].independent ? 'Yes' : 'No'}
+                    </span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Timezones:{' '}
+                  {country[0].timezones ? (
+                    <span>{country[0].timezones[0]}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Languages:
+                  {languageArray.length > 0 ? (
+                    languageArray.map((language) => (
+                      <span> {language} </span>
+                    ))
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+                <p>
+                  Currencies:{' '}
+                  {country[0].currencies ? (
+                    <span>{country[0].currencies[0].name}</span>
+                  ) : (
+                    <span>N/A</span>
+                  )}
+                </p>
+              </div>
             </div>
             <div className="info--part four">
               <h3>Border Countries:</h3>
