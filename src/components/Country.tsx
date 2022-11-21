@@ -80,7 +80,6 @@ function Country() {
       <p className="back">
         <Link
           to={`/`}
-          target="_parent"
           style={{ textDecoration: 'none' }}
           className="back--link"
         >
@@ -194,7 +193,7 @@ function Country() {
                     // TODO: make the border countries clickable and link to their respective pages
                     <Link
                       to={`/${borderCountry}`}
-                      target="_parent"
+                      target="_blank"
                       style={{ textDecoration: 'none' }}
                     >
                       <p> {borderCountry} </p>
