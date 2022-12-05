@@ -5,7 +5,6 @@ import {
   Link,
   useParams,
 } from 'react-router-dom'
-import arrowIcon from '../icons/arrow-back-outline.svg'
 
 function Country() {
   const [country, setCountry] = useState<any[]>([])
@@ -25,7 +24,7 @@ function Country() {
       setCountry(country)
     }
     getCountry()
-  }, [])
+  }, [name])
 
   // to get the languages, we need to map over the array
   useEffect(() => {
@@ -193,7 +192,6 @@ function Country() {
                     // TODO: make the border countries clickable and link to their respective pages
                     <Link
                       to={`/${borderCountry}`}
-                      target="_blank"
                       style={{ textDecoration: 'none' }}
                     >
                       <p> {borderCountry} </p>
